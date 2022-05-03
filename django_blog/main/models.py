@@ -9,10 +9,11 @@ class BlogPost(models.Model):
     Body = models.CharField(max_length=10000)
     Published = models.BooleanField()
     Archived = models.BooleanField()
-    Created = models.DateTimeField()
-    Updated = models.DateTimeField()
+    Created = models.DateTimeField(null=True)
+    Updated = models.DateTimeField(null=True)
 
     # create hash set of comments
+    # create collection of tags
 
 
 class Comment(models.Model):
@@ -21,7 +22,7 @@ class Comment(models.Model):
     Author = models.CharField(max_length=200)
     Body = models.CharField(max_length=1000)
     Created = models.DateTimeField()
-    Updated = models.DateTimeField()
+    Updated = models.DateTimeField(null=True)
 
     # create virtual collection of blog posts
     # create virtual collection of Authors
