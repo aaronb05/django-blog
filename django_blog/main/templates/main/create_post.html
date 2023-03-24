@@ -1,0 +1,71 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+<section class="create-post">
+    <div class="container-fluid">
+        <div class="header">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        Create New Post
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="blog-posts">
+            <div class="row">
+                <div class="col-md-12">
+                    {% if error is not None %}
+                    <div class="row">
+                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <img src="..." class="rounded me-2" alt="...">
+                                <strong class="me-auto">Error!</strong>
+                                <!--                        <small>11 mins ago</small>-->
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                {{ error }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="row create-form">
+                        <form method="post" action="/create-post/">
+                        {% csrf_token %}
+                            <div class="col-md-12 form-body">
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" class="form-control"
+                                           id="title" name="Title" placeholder="Enter title">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <input type="text" class="form-control"
+                                           id="description" name="Description" placeholder="Enter description">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="body" class="form-label">Body</label>
+                                    <textarea class="form-control" id="body" name="Body" rows="6"></textarea>
+                                </div>
+                                <!--                {{form.as_p}}-->
+                                <br>
+                                <button class="btn btn-primary btn-main" type="submit" name="Save">Create New</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
+
+
+
+
+
